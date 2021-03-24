@@ -1,19 +1,16 @@
 import React, { Component } from "react";
-import Ticket from "./ticket";
+import Ticket from "./Ticket";
 
 class ShownTickets extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      shownTickets: this.props.shownTickets,
-    };
   }
 
   render() {
     return (
-      <div className="hiddenTickets">
-        {this.state.shownTickets.map((ticket) => {
-          return <Ticket ticket={ticket} />;
+      <div className="shownTickets">
+        {this.props.shownTickets.map((ticket) => {
+          return <Ticket ticket={ticket} hide={this.props.hide} />;
         })}
       </div>
     );

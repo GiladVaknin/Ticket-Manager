@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Ticket from "./ticket";
+import Ticket from "./Ticket";
 
 class HiddenTickets extends Component {
   constructor(props) {
