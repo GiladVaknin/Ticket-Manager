@@ -6,7 +6,7 @@ const ticketSchema = new mongoose.Schema({
   data: String,
   writer: String,
   creationDate: String,
-  label: [String],
+  labels: [String],
   done: Boolean,
 });
 

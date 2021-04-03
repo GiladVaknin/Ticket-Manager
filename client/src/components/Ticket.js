@@ -3,34 +3,60 @@ import React, { Component } from "react";
 class Ticket extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: this.props.ticket.title,
-      content: this.props.ticket.content,
-      userEmail: this.props.ticket.userEmail,
-      creationTime: this.props.ticket.creationTime,
-      labels: this.props.ticket.labels,
-    };
+  }
+
+  createLabels() {
+    if (this.props.ticket.labels) {
+      this.props.ticket.labels.map((val) => {
+        console.log(val);
+        return <button className="label"> {val} </button>;
+      });
+    } else return;
   }
 
   render() {
     return (
       <div className="ticket">
-        <h2 className="title">{this.state.title}</h2>
-        <div className="ticketContent">{this.state.content}</div>
+        <h2 className="title">{this.props.ticket.title}</h2>
+        <div className="ticketContent">{this.props.ticket.content}</div>
         <button
-          className="hideButton"
+          className="hideTicketButton"
           onClick={() => this.props.hide(this.props.ticket)}
         >
-          hide
+          <img src="https://img.icons8.com/windows/32/000000/hide.png" />
+        </button>
+        <button
+          className={this.props.ticket.done ? "doneButton" : "undoneButton"}
+          onClick={() => this.props.markAsDone(this.props.ticket)}
+        >
+          <img src="https://img.icons8.com/windows/32/000000/--checkmark-yes.png" />
         </button>
         <div>
-          {if(this.state.labels)this.state.labels.map((label) => 
-            return <button> {label} </button>;
-          )}{" "}
+          {" "}
+          {this.props.ticket.labels
+            ? this.props.ticket.labels.map((val) => (
+                <button
+                  className="label"
+                  onClick={() => this.props.getLabelList(val)}
+                >
+                  {" "}
+                  {val}{" "}
+                </button>
+              ))
+            : ""}
         </div>
         <div className="ticketCreationData">
           {" "}
-          By {this.state.userEmail} , {this.state.creationTime}{" "}
+          By{" "}
+          <a
+            className="emailAdress"
+            href={`mailto:${this.props.ticket.userEmail}`}
+          >
+            {" "}
+            {this.props.ticket.userEmail}
+            {"   "}
+          </a>{" "}
+          {new Date(this.props.ticket.creationTime).toDateString()}{" "}
         </div>
       </div>
     );

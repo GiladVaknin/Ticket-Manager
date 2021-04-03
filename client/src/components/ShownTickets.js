@@ -9,9 +9,18 @@ class ShownTickets extends Component {
   render() {
     return (
       <div className="shownTickets">
-        {this.props.shownTickets.map((ticket) => {
-          return <Ticket ticket={ticket} hide={this.props.hide} />;
-        })}
+        {this.props.shownTickets
+          ? this.props.shownTickets.map((ticket) => {
+              return (
+                <Ticket
+                  getLabelList={this.props.getLabelList}
+                  markAsDone={this.props.markAsDone}
+                  ticket={ticket}
+                  hide={this.props.hide}
+                />
+              );
+            })
+          : null}
       </div>
     );
   }

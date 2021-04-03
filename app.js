@@ -5,7 +5,7 @@ const Ticket = require("./ticketModel");
 
 app.use(express.static("client/build"));
 
-app.get("/api/tickets/", (request, response) => {
+app.get("/api/tickets", (request, response) => {
   const searchText = request.query.searchText;
   Ticket.find({})
     .then((allTickets) => {
@@ -22,10 +22,26 @@ app.get("/api/tickets/", (request, response) => {
 });
 
 app.patch("/api/tickets/:ticketId/:isDone", (request, response) => {
-  console.log(request.params);
   let done = request.params.isDone === "done" ? true : false;
   Ticket.findByIdAndUpdate(request.params.ticketId, { done: done }).then(() => {
     response.send({ updated: true });
+  });
+});
+
+app.get("/api/tickets/done", (request, response) => {
+  Ticket.find({ done: true })
+    .then((allDoneTickets) => {
+      response.status(200).json(allDoneTickets);
+    })
+    .catch((err) => response.status(404).send(err, "Not Found"));
+});
+
+app.get("/api/tickets/:label", (request, response) => {
+  Ticket.find({}).then((allTickets) => {
+    const labelTickets = allTickets.filter((ticket) =>
+      ticket.labels.includes(request.params.label)
+    );
+    response.json(labelTickets);
   });
 });
 
