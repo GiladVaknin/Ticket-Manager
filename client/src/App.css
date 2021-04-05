@@ -1,38 +1,114 @@
+#root {
+  background-color: #fff8dc;
+}
+
 .App {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 25% 75%;
+}
+
+.App h1 {
+  letter-spacing: 0.3vw;
+  font-size: xx-large;
+  /* font-family: "Abril Fatface", cursive; */
+  font-family: "Playfair Display SC", serif;
+}
+
+.shownTickets {
+  grid-row: 2;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-color: #deb887 #fff8dc;
+}
+
+.shownTickets ::-webkit-scrollbar-track {
+  background-color: #fff8dc;
+}
+.shownTickets::-webkit-scrollbar-thumb {
+  color: #deb887;
+}
+
+#controlSection {
+  grid-row: 1;
+  display: block;
+  margin: auto;
+}
+
+#restoreHideTickets {
+  border: none;
+  background-color: unset;
+  font-size: 1.5rem;
+  font-family: "Playfair Display SC", serif;
+  text-decoration: underline;
+}
+
+.ticket {
+  width: 80%;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: auto;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 0.5px solid #deb887;
 }
 
-.App-link {
-  color: #61dafb;
+.ticket h2 {
+  font-family: "Playfair Display SC", serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#searchInput {
+  border: none;
+  font-size: 100%;
+  width: 90%;
+  font-family: "Playfair Display SC", serif;
+  letter-spacing: 1px;
+}
+
+.hideTicketButton {
+  border: none;
+  background-color: unset;
+}
+
+.doneButton {
+  border: none;
+  background-color: unset;
+}
+.undoneButton {
+  border: none;
+  background-color: unset;
+  background-size: auto;
+  color: #800000;
+}
+
+#hiddenTicketsData {
+  padding-top: 0.1vh;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Playfair Display SC", serif;
+}
+
+.label {
+  background-color: unset;
+  color: #a0522d;
+  border: none;
+  font-family: "Playfair Display SC", serif;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.emailAdress {
+  color: #800000;
+  font-family: "Playfair Display SC", serif;
+}
+
+.navBarButton {
+  border: none;
+  background-color: unset;
+  font-size: 1.5rem;
+  font-family: "Playfair Display SC", serif;
+  text-decoration: underline;
+}
+
+.navBar {
+  text-align: center;
 }
